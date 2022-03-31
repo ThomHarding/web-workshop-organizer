@@ -26,6 +26,10 @@ async function fetchAndDisplayWorkshops() {
     }
 }
 
+window.addEventListener('load', async () => {
+    fetchAndDisplayWorkshops();
+});
+
 logoutButton.addEventListener('click', () => {
     logout();
 });
