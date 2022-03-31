@@ -38,17 +38,28 @@ export async function logout() {
 }
 
 export async function getWorkshops() {
-    //select all workshops
+    const response = await client 
+        .from('workshops')
+        .select(`*, participants (*)`);
+    return checkError(response);
 }
 
 export async function createParticipant(participant) {
-    //insert participant into supabase, attached to a workshop
+    const response = await client 
+        .from('participants')
+        .insert(participant);
+    return checkError(response);
 }
 
 export async function deleteParticipant(id) {
-    //delete from participants id = id
+    const response = await client 
+        .from('participants')
+        .delete()
+        .match({ id: id })
+        .single();
+    return checkError(response);
 }
 
-// function checkError({ data, error }) {
-//     return error ? console.error(error) : data;
-// }
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
+}
