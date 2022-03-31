@@ -85,10 +85,10 @@ footer {
     box-shadow: var(--shadow);
 }
 
-  
-  @keyframes pulse {
+
+@keyframes pulse {
     20% {
-      transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
+        transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
     }
 
     40% {
@@ -97,13 +97,13 @@ footer {
 
     60% {
         transform: rotate3d(-10, 10, 10, 50deg) scale(1.2);
-      }
+    }
 
     80% {
         transform: rotate3d(10, 10, 10, 50deg) scale(1);
     }
 
-  }
+}
 
 #logout {
     position: fixed;
@@ -128,4 +128,15 @@ footer {
 
 .auth-container button {
     margin: 10px;
+}
+
+.workshop {
+    border: solid 1px black;
+    width: 100%;
+    margin: 40px;
+    padding: 10px;
+}
+
+.participant {
+    border: 1px dotted purple;
 }
