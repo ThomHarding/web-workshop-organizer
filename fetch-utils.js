@@ -40,14 +40,18 @@ export async function logout() {
 export async function getWorkshops() {
     const response = await client 
         .from('workshops')
-        .select(`*, participants (*)`);
+        .select(`*, participants (*)`)
+        .match({ 'participants.user_id':  client.auth.session().user.id });
     return checkError(response);
 }
 
 export async function createParticipant(participant) {
     const response = await client 
         .from('participants')
-        .insert(participant);
+        .insert({
+            ...participant,
+            user_id: client.auth.session().user.id,
+        });
     return checkError(response);
 }
 

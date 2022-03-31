@@ -6,7 +6,7 @@ const logoutButton = document.getElementById('logout');
 const workshopsDisplay = document.getElementById('workshops-container');
 
 async function fetchAndDisplayWorkshops() {
-    let workshops = getWorkshops();
+    let workshops = await getWorkshops();
     workshopsDisplay.innerHTML = '';
     for (let workshop of workshops) {
         let workshopDiv = document.createElement('div');
@@ -17,7 +17,7 @@ async function fetchAndDisplayWorkshops() {
             participantDiv.textContent = participant.name;
             participantDiv.addEventListener('click', async () => {
                 await deleteParticipant(participant.id);
-                fetchAndDisplayWorkshops();
+                await fetchAndDisplayWorkshops();
             });
             participantsDiv.append(participantDiv);
         }
@@ -27,7 +27,7 @@ async function fetchAndDisplayWorkshops() {
 }
 
 window.addEventListener('load', async () => {
-    fetchAndDisplayWorkshops();
+    await fetchAndDisplayWorkshops();
 });
 
 logoutButton.addEventListener('click', () => {
