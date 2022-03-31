@@ -10,23 +10,37 @@
     <link rel="stylesheet" href="../styles/reset.css">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/home.css">
-    <title>Document</title>
+    <title>Create Participant</title>
 </head>
 
 <body>
     <header>
         <div class="gutter-right logo">
-            <img src="../assets/big-logo.png" />
+            <a href="../workshops" >See all workshops</a>
+            <a href="../create" >Add a participant</a>
         </div>
     </header>    
     <button id="logout">Logout</button>
-    <main>
-        <h1>You are logged in!</h1>
+    <main class="create-main">
+        <h2>Add a new participant</h2>
+        <form class="participant-form">
+            <label>
+                Participant's name
+                <input name="participant-name" />
+            </label>
+            <label>
+                Belongs to
+                <select name="workshop-id">
+
+                </select>    
+            </label>
+            <button>Submit</button>
+        </form>
     </main>
     <footer>
-        <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
+        <div class="copy gutter-right">&copy; 2022 Aspiring Developer</div>
     </footer>
-    <script type="module" src="./other-page.js"></script>
+    <script type="module" src="./create.js"></script>
 </body>
 
 </html>
