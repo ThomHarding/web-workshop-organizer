@@ -15,7 +15,7 @@ export function checkAuth() {
 
 export function redirectIfLoggedIn() {
     if (getUser()) {
-        location.replace('./other-page');
+        location.replace('./workshops');
     }
 }
 
@@ -35,6 +35,18 @@ export async function logout() {
     await client.auth.signOut();
 
     return (window.location.href = '../');
+}
+
+export async function getWorkshops() {
+    //select all workshops
+}
+
+export async function createParticipant(participant) {
+    //insert participant into supabase, attached to a workshop
+}
+
+export async function deleteParticipant(id) {
+    //delete from participants id = id
 }
 
 // function checkError({ data, error }) {
