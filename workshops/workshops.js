@@ -11,6 +11,7 @@ async function fetchAndDisplayWorkshops() {
     for (let workshop of workshops) {
         let workshopDiv = document.createElement('div');
         let workshopNameHolder = document.createElement('h3');
+        workshopNameHolder.textContent = workshop.name;
         let participantsDiv = document.createElement('div');
         for (let participant of workshop.participants) {
             let participantDiv = document.createElement('div');
