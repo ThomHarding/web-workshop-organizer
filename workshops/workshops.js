@@ -1,25 +1,28 @@
-import { checkAuth, getWorkshops, logout } from '../fetch-utils.js';
+import { checkAuth, deleteParticipant, getWorkshops, logout } from '../fetch-utils.js';
 
 checkAuth();
 
 const logoutButton = document.getElementById('logout');
+const workshopsDisplay = document.getElementById('workshops-container');
 
 async function fetchAndDisplayWorkshops() {
     let workshops = getWorkshops();
+    workshopsDisplay.innerHTML = '';
     for (let workshop of workshops) {
-        //create a div for it to go into
-        //div containing name of workshop
-        //div to contain participants
+        let workshopDiv = document.createElement('div');
+        let workshopNameHolder = document.createElement('h3');
+        let participantsDiv = document.createElement('div');
         for (let participant of workshop.participants) {
-            //make participant div
-            //add name
-            //on click event
-                //delete participant
-                //fetchAndDisplayWorkshops();
-            //add to workshop div
+            let participantDiv = document.createElement('div');
+            participantDiv.textContent = participant.name;
+            participantDiv.addEventListener('click', async () => {
+                await deleteParticipant(participant.id);
+                fetchAndDisplayWorkshops();
+            });
+            participantsDiv.append(participantDiv);
         }
-        //add participants and name div to container div
-        //add container div to containerer div
+        workshopDiv.append(participantsDiv, workshopNameHolder);
+        workshopsDisplay.append(workshopDiv);
     }
 }
 
